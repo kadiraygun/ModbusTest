@@ -19,6 +19,10 @@ namespace ModbusTest
 
             ModbusClient modbus = Ethernet("10.0.0.9", 502);
             //ModbusClient modbus = SerialPortModbus("Com2", 1, 9600, Parity.Even, StopBits.One);
+            modbus.ConnectionTimeout = 1000;
+            if (!modbus.Connected)
+                modbus.Connect();
+
             Test(modbus);
 
         }
